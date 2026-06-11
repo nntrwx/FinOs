@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../ui/Card';
-import { Budget } from '@/data/mockData';
+import { Budget } from '../../data/mockData';
 
 interface BudgetProgressProps {
   budgets: Budget[];

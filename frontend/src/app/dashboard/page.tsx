@@ -1,17 +1,17 @@
-import { SummaryCard } from "@/components/dashboard/SummaryCard";
-import { TransactionList } from "@/components/dashboard/TransactionList";
-import { mockTransactions, mockMonthlyStats, spendingHistory, mockBudget } from "@/data/mockData";
+import { SummaryCard } from "../../components/dashboard/SummaryCard";
+import { TransactionList } from "../../components/dashboard/TransactionList";
+import { mockTransactions, mockMonthlyStats, spendingHistory, mockBudget } from "../../data/mockData";
 import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
 import Link from "next/link";
 import dynamic from 'next/dynamic';
 
 // Dynamic imports for charts to improve performance (lazy loading)
-const SpendingChart = dynamic(() => import('@/components/dashboard/SpendingChart').then(mod => mod.SpendingChart), { 
+const SpendingChart = dynamic(() => import('../../components/dashboard/SpendingChart').then(mod => mod.SpendingChart), { 
   ssr: false,
   loading: () => <div className="h-[400px] w-full bg-background-secondary animate-pulse rounded-xl" />
 });
 
-const CategoryChart = dynamic(() => import('@/components/dashboard/CategoryChart').then(mod => mod.CategoryChart), { 
+const CategoryChart = dynamic(() => import('../../components/dashboard/CategoryChart').then(mod => mod.CategoryChart), { 
   ssr: false,
   loading: () => <div className="h-[400px] w-full bg-background-secondary animate-pulse rounded-xl" />
 });

@@ -1,8 +1,8 @@
-import { TransactionList } from "@/components/dashboard/TransactionList";
-import { mockTransactions } from "@/data/mockData";
+import { TransactionList } from "../../../components/dashboard/TransactionList";
+import { mockTransactions } from "../../../data/mockData";
 import { Search, Filter, Download } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { CustomSelect } from "@/components/dashboard/CustomSelect";
+import { Button } from "../../../components/ui/Button";
+import { CustomSelect } from "../../../components/dashboard/CustomSelect";
 
 export default function Page() {
   return (

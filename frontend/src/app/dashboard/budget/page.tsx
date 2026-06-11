@@ -1,10 +1,10 @@
-import { BudgetProgress } from "@/components/dashboard/BudgetProgress";
-import { mockBudget } from "@/data/mockData";
+import { BudgetProgress } from "../../../components/dashboard/BudgetProgress";
+import { mockBudget } from "../../../data/mockData";
 import { PieChart, ListChecks, Plus } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "../../../components/ui/Button";
 import dynamic from 'next/dynamic';
 
-const CategoryChart = dynamic(() => import('@/components/dashboard/CategoryChart').then(mod => mod.CategoryChart), { 
+const CategoryChart = dynamic(() => import('../../../components/dashboard/CategoryChart').then(mod => mod.CategoryChart), { 
   ssr: false,
   loading: () => <div className="h-[400px] w-full bg-background-secondary animate-pulse rounded-xl" />
 });

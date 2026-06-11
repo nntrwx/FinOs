@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
-import { Transaction } from '@/data/mockData';
+import { Transaction } from '../../data/mockData';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 interface TransactionListProps {

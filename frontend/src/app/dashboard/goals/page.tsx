@@ -1,7 +1,7 @@
-import { GoalCard } from "@/components/dashboard/GoalCard";
-import { mockGoals } from "@/data/mockData";
+import { GoalCard } from "../../../components/dashboard/GoalCard";
+import { mockGoals } from "../../../data/mockData";
 import { Target, Plus } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "../../../components/ui/Button";
 
 export default function Page() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../ui/Card';
-import { Goal } from '@/data/mockData';
+import { Goal } from '../../data/mockData';
 import { Target } from 'lucide-react';
 
 interface GoalCardProps {
