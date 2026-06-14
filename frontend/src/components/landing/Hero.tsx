@@ -34,15 +34,21 @@ export default function Hero() {
           FinOS fixes that with smart insights and elegant control.
         </motion.p>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <Link href="/dashboard">
+          <Link href="/auth?mode=register">
             <Button className="h-16 px-12 text-lg font-bold bg-accent/90 backdrop-blur-md text-background-primary border border-accent/20 shadow-[0_0_20px_rgba(159,211,86,0.3)] hover:shadow-[0_0_30px_rgba(159,211,86,0.5)]">
               Try FinanceOS Free
+            </Button>
+          </Link>
+          <Link href="/dashboard">
+            <Button variant="secondary" className="h-16 px-12 text-lg font-bold bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 text-text-primary">
+              View Demo
             </Button>
           </Link>
         </motion.div>

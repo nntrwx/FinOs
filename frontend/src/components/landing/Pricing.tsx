@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "../ui/Button";
+import Link from "next/link";
 
 const plans = [
   {
@@ -90,12 +91,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <Button 
-                variant={plan.accent ? 'primary' : 'secondary'} 
-                className="w-full py-6 font-bold"
-              >
-                {plan.buttonText}
-              </Button>
+              <Link href="/auth?mode=register" className="w-full">
+                <Button 
+                  variant={plan.accent ? 'primary' : 'secondary'} 
+                  className="w-full py-6 font-bold"
+                >
+                  {plan.buttonText}
+                </Button>
+              </Link>
             </motion.div>
           ))}
         </div>
