@@ -29,6 +29,29 @@ The app runs on [http://localhost:3000](http://localhost:3000).
 ```bash
 cd backend
 npm install
+```
+
+Create a `.env` file in `backend` and add your database connection string:
+
+You can find an example in the `.env.example` file
+
+```bash
+# Format: postgresql://user:password@localhost:5432/database_name
+PORT=4000
+DATABASE_URL="postgresql://postgres:your_password@localhost:5432/your_db_name"
+JWT_SECRET="some_text"
+```
+
+Initialize the database and generate the Prisma client:
+
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+Start the server:
+
+```bash
 npm run dev
 ```
 

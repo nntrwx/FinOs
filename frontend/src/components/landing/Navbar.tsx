@@ -29,10 +29,10 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-4">
-        <Link href="/dashboard" className="text-text-primary text-sm font-medium hover:text-accent transition-colors">
+        <Link href="/auth?mode=login" className="text-text-primary text-sm font-medium hover:text-accent transition-colors">
           Log In
         </Link>
-        <Link href="/dashboard">
+        <Link href="/auth?mode=register">
           <Button size="sm" className="px-6">Get started</Button>
         </Link>
       </div>
@@ -67,10 +67,10 @@ export default function Navbar() {
               ))}
               <hr className="border-border-tertiary/20" />
               <div className="flex flex-col gap-4">
-                <Link href="/dashboard" className="text-text-primary text-center py-2" onClick={() => setIsOpen(false)}>
+                <Link href="/auth?mode=login" className="text-text-primary text-center py-2" onClick={() => setIsOpen(false)}>
                   Log In
                 </Link>
-                <Link href="/dashboard" onClick={() => setIsOpen(false)}>
+                <Link href="/auth?mode=register" onClick={() => setIsOpen(false)}>
                   <Button className="w-full py-4">Get started</Button>
                 </Link>
               </div>
