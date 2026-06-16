@@ -2,14 +2,9 @@ import * as dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
-import { PrismaClient } from '../generated/prisma/client.js';
-import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg';
+import { prisma } from '../db.js';
 
 dotenv.config();
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
 
 export const authController = {
     register: async (req: Request, res: Response) => {
@@ -26,7 +21,7 @@ export const authController = {
             const user = await prisma.user.create({
                 data: {
                     email: email,
-                    password_hash: await bcrypt.hash(password, 10),
+                    passwordHash: await bcrypt.hash(password, 10),
                     name: name
                 }
             });
@@ -46,7 +41,7 @@ export const authController = {
         if (!user) {
             return res.status(400).json({ error: 'User not found.' });
         }
-        const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+        const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
         if (!isPasswordValid) {
             return res.status(400).json({ error: 'Invalid password.' });
         }

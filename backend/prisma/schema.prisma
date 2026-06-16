@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            Int    @id @default(autoincrement())
+  email         String @unique
+  passwordHash String
+  name          String
+
+  lastMonthBalance Decimal @default(0)
+  lastMonthExpenses Decimal @default(0)
+  lastMonthIncomes Decimal @default(0)
+  monthSalary Decimal @default(0)
+
+  transactions    Transaction[]
+  monthlySummarys monthlySummary[] 
+  yearlySummarys  yearlySummary[]
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum transactionCategory {
+  FOOD
+  TRANSPORT
+  ENTERTAINMENT
+  UTILITIES
+  HEALTHCARE
+  OTHER
+}
+
+model Transaction {
+  id Int @id @default(autoincrement())
+  amount Decimal
+  type TransactionType
+  category transactionCategory
+  description String?
+  date DateTime @default(now())
+  userId Int
+
+  user User @relation(fields: [userId], references: [id])
+  @@index([userId, date])
+}
+
+model monthlySummary {
+  id Int @id @default(autoincrement())
+  month String
+  year Int
+  salary Decimal @default(0)
+  totalIncome Decimal @default(0)
+  totalExpense Decimal @default(0)
+  userId Int
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model yearlySummary {
+  id Int @id @default(autoincrement())
+  year Int
+  totalIncome Decimal @default(0)
+  totalExpense Decimal @default(0)
+  userId Int
+
+  user User @relation(fields: [userId], references: [id])
+}

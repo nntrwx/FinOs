@@ -1,4 +1,12 @@
-node_modules
-dist
 .env
+
+node_modules/
+
+/src/generated/
+/prisma/migrations/
+/src/migrations/
+
+# Логи и прочее
+dist/
+*.log
 .DS_Store
