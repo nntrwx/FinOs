@@ -17,9 +17,7 @@ model User {
   passwordHash String
   name          String
 
-  lastMonthBalance Decimal @default(0)
-  lastMonthExpenses Decimal @default(0)
-  lastMonthIncomes Decimal @default(0)
+  balance Decimal @default(0)
   monthSalary Decimal @default(0)
 
   transactions    Transaction[]
@@ -32,7 +30,7 @@ enum TransactionType {
   EXPENSE
 }
 
-enum transactionCategory {
+enum TransactionCategory {
   FOOD
   TRANSPORT
   ENTERTAINMENT
@@ -45,12 +43,14 @@ model Transaction {
   id Int @id @default(autoincrement())
   amount Decimal
   type TransactionType
-  category transactionCategory
+  category TransactionCategory
   description String?
   date DateTime @default(now())
   userId Int
+  monthlySummaryId Int?
 
   user User @relation(fields: [userId], references: [id])
+  monthlySummary   monthlySummary? @relation(fields: [monthlySummaryId], references: [id])
   @@index([userId, date])
 }
 
@@ -62,7 +62,10 @@ model monthlySummary {
   totalIncome Decimal @default(0)
   totalExpense Decimal @default(0)
   userId Int
+  yearlySummaryId Int?
 
+  transactions Transaction[]
+  yearlySummary yearlySummary? @relation(fields: [yearlySummaryId], references: [id])
   user User @relation(fields: [userId], references: [id])
 }
 
@@ -73,5 +76,6 @@ model yearlySummary {
   totalExpense Decimal @default(0)
   userId Int
 
+  monthlySummarys monthlySummary[]
   user User @relation(fields: [userId], references: [id])
 }

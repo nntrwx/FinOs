@@ -18,8 +18,10 @@ app.use(express.json());
 app.post('/api/register', authController.register);
 app.post('/api/login', authController.login);
 
-app.get('/api/getSummary', authenticate, transactionController.getSummary);
+app.get('/api/getMonthSummary', authenticate, transactionController.getMonthSummary);
 app.post('/api/setMonthSalary', authenticate, transactionController.setMonthSalary);
+app.post('/api/createTransaction', authenticate, transactionController.createTransaction);
+app.get('/api/getTransactions', authenticate, transactionController.getTransactions);
 
 app.listen(port, () => {
   console.log(`Backend listening on http://localhost:${port}`);
